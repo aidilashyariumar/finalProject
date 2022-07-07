@@ -136,7 +136,7 @@ if(isset($_POST['cari'])){
                 <div class="brand d-flex justify-content-between align-items-center">
                     <a href="adminutama.php" class="logo d-flex">
                         <img src="logo hmjti 1.png" alt="" class=" ">
-                        <p class="ms-3  fw-bold text-light">Himpunan Mahasiswa Jurusan <br>Teknik
+                        <p class="ms-3  fw-bold text-light">BERI KRITIK DAN SARAN <br>Teknik
                             Informatika</p>
                     </a>
                 </div>
@@ -164,7 +164,7 @@ if(isset($_POST['cari'])){
     <section>
         <div class="isi">
 
-            <h4 class="text-center mt-3" id="berita">Data Kegiatan Himpunan Mahasiswa Jurusan <br> Teknik Informatika</h4
+            <h4 class="text-center mt-3" id="berita">Beri Kritik dan Saran </h4
                 class="text-center">
                 <div class="container d-flex justify-content-between align-items-center mb-3">
       

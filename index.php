@@ -89,8 +89,8 @@ $jumlah_barang = mysqli_num_rows($count);
       <div class="row  d-flex justify-content-between align-items-center " style="">
         <div class="col-12 col-lg-6 col-md-6">
           <div class="div">
-            <h1 class="fw-bold">Selamat Datang di Berkisar</h1>
-            <p>Berkisar adalah sebuah tempat bagi <br>
+            <h1 class="fw-bold">Selamat Datang di BERKISAR</h1>
+            <p>BERKISAR adalah sebuah tempat bagi <br>
               Masyarakat Sulawesi Selatan untuk <br>
               berkeluh kesah pada Pemerintah</p>
           </div>
@@ -249,8 +249,8 @@ $jumlah_barang = mysqli_num_rows($count);
     <div class="">
       <h2 class="d-flex justify-content-center fw-bold">Tentang Kami</h2>
       <div class="p-1" style="width:75%; margin:0px auto; background-color: #011627; color:white;">
-        <h3 class="d-flex justify-content-center">Berkisar</h3>
-        <p style="text-indent: 50px;">Berkisar (Beri Kritik dan Saran) adalah sebuah wadah berbentuk website yang
+        <h3 class="d-flex justify-content-center">BERKISAR</h3>
+        <p style="text-indent: 50px;">BERKISAR (Beri Kritik dan Saran) adalah sebuah wadah berbentuk website yang
           menjadi tempat untuk masyarakat Sulawesi Selatan di beberapa Kabupaten agar bisa berkeluh kesah tentang hal -
           hal yang berhubungan dengan kepemerintahan. <br></p>
         <p style="text-indent: 50px;">Berkisar diciptakan pada tanggal 10 Desember 2021 oleh seseorang yang tidak ingin
