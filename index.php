@@ -1,7 +1,7 @@
 <?php
 
 include 'fungsi.php';
-if (isset($_POST["aduan"])){
+if (isset($_POST["adu"])){
     if(tambah_data($_POST) > 0){
         echo"
              <script>
@@ -111,10 +111,11 @@ if (isset($_POST["aduan"])){
         <div class="col col-12 col-lg-6 col-md-">
           <div class="kritik" style="width:100% ;">
             <h2>Silahkan mulai berkeluh kesah!</h2>
-            <form>
+            
+            <form method="post" action="" enctype="multipart/form-data">
               <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email" nama="email" aria-describedby="emailHelp">
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
               </div>
               <div class="mb-3">
                 <label for="kritik" class="form-label">Kritik</label>
@@ -149,11 +150,8 @@ if (isset($_POST["aduan"])){
                 <label for="img" class="form-label ">GAMBAR</label>
                 <input type="file" name="img" class="form-control" id="img" aria-describedby="emailHelp">
               </div>
-              <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Sembunyikan Edintitas</label>
-              </div>
-              <button type="submit" class="btn btn-danger" name="aduan">KIRIM</button>
+             
+              <button type="submit" class="btn btn-danger" name="adu">KIRIM</button>
             </form>
           </div>
         </div>

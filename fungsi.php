@@ -14,7 +14,7 @@
         $kritik = htmlspecialchars($data["kritik"]);
         $saran = htmlspecialchars($data["saran"]);
         $kategori = htmlspecialchars($data["kategori"]);
-        $institusi = htmlspecialchars($data["institusi"]);
+        $instansi = htmlspecialchars($data["instansi"]);
         
         $img = uploadimg();
 
@@ -23,7 +23,7 @@
         }
 
         //tambah file kedatabase
-        mysqli_query($conn,"INSERT INTO aduan VALUES('','$email','$kritik',''$saran','$kategori','$institusi,'$img')");
+        mysqli_query($conn,"INSERT INTO aduan VALUES('','$email','$kritik','$saran','$kategori','$instansi,'$img')");
 
         return mysqli_affected_rows($conn);
     }
@@ -175,7 +175,7 @@
        $kritik = htmlspecialchars($data["kritik"]);
        $saran = htmlspecialchars($data["saran"]);
        $kategori = htmlspecialchars($data["kategori"]);
-       $institusi = htmlspecialchars($data["institusi"]);
+       $instansi = htmlspecialchars($data["instansi"]);
 
     
 
@@ -186,7 +186,7 @@
                 kritik = '$kritik',
                 saran= '$saran',
                 kategori = '$kategori',
-                institusi= '$institusi',
+                instansi= '$instansi',
                 img= '$img'
                 WHERE id = $id";
 
@@ -199,7 +199,7 @@
     function uploadimg(){
 
         $nameFile = $_FILES['img']['name'];
-        $ukuranFile = $_FILES['img']['size'];
+        // $ukuranFile = $_FILES['img']['size'];
         $error = $_FILES['img']['error'];
         $tmpName = $_FILES['img'] ['tmp_name'];
 
@@ -245,16 +245,11 @@
     }
 
     function cari($keyword){
-        $query = "SELECT * FROM berita WHERE nama LIKE '%$keyword%' OR desk LIKE '%$keyword%'";
+        $query = "SELECT * FROM aduan WHERE nama LIKE '%$keyword%' OR desk LIKE '%$keyword%'";
         
 
         return query($query);
     }
-    function boya($keyword){
-        $query = "SELECT * FROM kegiatan WHERE nama LIKE '%$keyword%' OR desk LIKE '%$keyword%'";
-        
-
-        return query($query);
-    }
+    
 
 ?>
