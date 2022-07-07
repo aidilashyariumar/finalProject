@@ -23,7 +23,7 @@
         }
 
         //tambah file kedatabase
-        mysqli_query($conn,"INSERT INTO aduan VALUES('','$email','$kritik','$saran','$kategori','$instansi,'$img')");
+        mysqli_query($conn,"INSERT INTO aduan VALUES('','$email','$kritik','$saran','$kategori','$instansi','$img')");
 
         return mysqli_affected_rows($conn);
     }

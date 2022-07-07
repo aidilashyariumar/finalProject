@@ -79,7 +79,7 @@ $awladata = ($jmldataperhalaman * $halamanaktif) - $jmldataperhalaman;
 $kegiatan = query("SELECT * FROM kegiatan LIMIT $awladata,$jmldataperhalaman");
 
 if(isset($_POST['cari'])){
-    $kegiatan = boya($_POST["keyword"],$awladata,$jmldataperhalaman);
+    $kegiatan = cari($_POST["keyword"],$awladata,$jmldataperhalaman);
 }else{
     $kegiatan = query("SELECT * FROM kegiatan LIMIT $awladata,$jmldataperhalaman");
 }
