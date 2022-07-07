@@ -1,3 +1,25 @@
+<?php
+
+include 'fungsi.php';
+if (isset($_POST["aduan"])){
+    if(tambah_data($_POST) > 0){
+        echo"
+             <script>
+                 alert('data berhasil ditambahkan');
+                 document.location.href = 'index.php';
+             </script>
+         ";
+    }else{
+         echo"
+             <script>
+                 alert('data gagal ditambahkan');
+                 document.location.href = 'index.php';
+             </script>
+          ";
+    }
+}?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +34,7 @@
 <style>
   .logo {
     background-color: #F02C2E;
-    background-image: url(Vector.png);
+    background-image: url(./img/Vector.png);
     padding: 20px;
   }
 
@@ -32,9 +54,9 @@
 </style>
 
 <body>
-  <nav class="navbar navbar-expand-lg  fixed-top " style="background-color:white ;">
+  <nav class="navbar navbar-expand-lg  fixed-top  " style="background-color:white ;">
     <div class="container">
-      <a class="navbar-brand" href="#"><img src="Group 8.png" alt=""></a>
+      <a class="navbar-brand" href="#"><img src="./img/Group 8.png" alt=""></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -56,7 +78,7 @@
     </div>
   </nav>
 
-  <section class="container d-flex justify-content-between align-items-center " style="margin-top: 150px;">
+  <section class="container d-flex justify-content-between align-items-center " style="margin-top: 250px;">
     <div class="container">
       <div class="row  d-flex justify-content-between align-items-center " style="">
         <div class="col-12 col-lg-6 col-md-6">
@@ -69,7 +91,7 @@
         </div>
         <div class="col-12 col-lg-6 col-md-6 ">
           <div class="div">
-            <img src="Gambar.png" alt="">
+            <img src="./img/Gambar.png" alt="">
           </div>
         </div>
 
@@ -83,7 +105,7 @@
       <div class="row  d-flex justify-content-between align-items-center">
         <div class="col col-12 col-lg-6 col-md-">
           <div class="img">
-            <img src="Group 27.jpg" alt="">
+            <img src="./img/Group 27.jpg" alt="">
           </div>
         </div>
         <div class="col col-12 col-lg-6 col-md-">
@@ -91,20 +113,20 @@
             <h2>Silahkan mulai berkeluh kesah!</h2>
             <form>
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" nama="email" aria-describedby="emailHelp">
               </div>
               <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Kritik</label>
-                <textarea type="text" class="form-control" id="exampleInputPassword1"> </textarea>
+                <label for="kritik" class="form-label">Kritik</label>
+                <textarea type="text" class="form-control" id="kritik" name="kritik"> </textarea>
               </div>
               <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Saran</label>
-                <textarea type="text" class="form-control" id="exampleInputPassword1"> </textarea>
+                <label for="saran" class="form-label">Saran</label>
+                <textarea type="text" class="form-control" id="saran" name="saran"> </textarea>
               </div>
               <div class="mb-3">
-                <label for="Select" class="form-label">Kategori</label>
-                <select id="Select" class="form-select">
+                <label for="kategori" class="form-label">Kategori</label>
+                <select id="kategori" name="kategori" class="form-select">
                   <option>lain-lain</option>
                   <option>banjir</option>
                   <option>gempa</option>
@@ -112,17 +134,26 @@
                 </select>
               </div>
               <div class="mb-3">
-                <label for="Select" class="form-label">instansi</label>
-                <select id="Select" class="form-select">
-                  <option>Disabled select</option>
-                  <option>Disabled select</option>
+                <label for="instansi" class="form-label">instansi</label>
+                <select id="instansi" name="instansi" class="form-select">
+                  <option>KABUPATEN SINJAI</option>
+                  <option>KABUPATEN MAROS</option>
+                  <option>KABUPATEN GOWA</option>
+                  <option>KABUPATEN BONE</option>
+                  <option>KABUPATEN TAKALAR</option>
+                  <option>KABUPATEN BULUKUMBA</option>
+                  <option>KABUPATEN BANTAENG</option>
                 </select>
+              </div>
+              <div class="mb-3">
+                <label for="img" class="form-label ">GAMBAR</label>
+                <input type="file" name="img" class="form-control" id="img" aria-describedby="emailHelp">
               </div>
               <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">Sembunyikan Edintitas</label>
               </div>
-              <button type="submit" class="btn btn-danger">KIRIM</button>
+              <button type="submit" class="btn btn-danger" name="aduan">KIRIM</button>
             </form>
           </div>
         </div>
@@ -140,18 +171,18 @@
 
 
         <div class="logo1 d-flex justify-content-around ">
-          <img src="gowa 1.png" alt="">
-          <img src="bone 1.png" alt="">
-          <img src="bulkum 1.png" alt="">
-          <img src="selayar 1.png" alt="">
-          <img src="lutra 1.png" alt="">
+          <img src="./img/gowa 1.png" alt="">
+          <img src="./img/bone 1.png" alt="">
+          <img src="./img/bulkum 1.png" alt="">
+          <img src="./img/selayar 1.png" alt="">
+          <img src="./img/lutra 1.png" alt="">
         </div>
         <div class="logo1 d-flex justify-content-around mt-4">
-          <img src="gowa 1.png" alt="">
-          <img src="bone 1.png" alt="">
-          <img src="bulkum 1.png" alt="">
-          <img src="selayar 1.png" alt="">
-          <img src="lutra 1.png" alt="">
+          <img src="./img/gowa 1.png" alt="">
+          <img src="./img/bone 1.png" alt="">
+          <img src="./img/bulkum 1.png" alt="">
+          <img src="./img/selayar 1.png" alt="">
+          <img src="./img/lutra 1.png" alt="">
         </div>
 
       </div>
@@ -162,7 +193,7 @@
     <div class="container my-5">
       <h2 class="fw-bold d-flex justify-content-center my-5">Proses Berkeluh Kesah</h2>
       <div class="d-flex justify-content-center">
-        <img class="" src="Group 28.png" style="width: 80%;" alt="">
+        <img class="" src="./img/Group 28.png" style="width: 80%;" alt="">
       </div>
     </div>
   </section>
@@ -192,7 +223,7 @@
           </div>
         </div>
         <div class="col-12 col-lg-4 col-md-4">
-        <div class="card" style="width: 18rem;">
+          <div class="card" style="width: 18rem;">
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
@@ -203,7 +234,7 @@
           </div>
         </div>
         <div class="col-12 col-lg-4 col-md-4">
-        <div class="card" style="width: 18rem;">
+          <div class="card" style="width: 18rem;">
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
@@ -219,16 +250,17 @@
   </section>
 
   <!-- penelusuran -->
-<section>
-  <div class="container">
+  <section>
+    <div class="container">
 
-    <h2 class="fw-bold d-flex justify-content-center my-5">PENELUSURAN ADUAN</h2>
-    <form class="" style="" role="search">
-      <input class="form-control me-2" type="search" placeholder="Cari Aduan" aria-label="Search">
-      <button class="btn btn-danger d-flex justify-content-center my-5" style="width: 10% ; margin:0px auto;" type="submit">CARI</button>
-    </form>
-  </div>
-</section>
+      <h2 class="fw-bold d-flex justify-content-center my-5">PENELUSURAN ADUAN</h2>
+      <form class="" style="" role="search">
+        <input class="form-control me-2" type="search" placeholder="Cari Aduan" aria-label="Search">
+        <button class="btn btn-danger d-flex justify-content-center my-5" style="width: 10% ; margin:0px auto;"
+          type="submit">CARI</button>
+      </form>
+    </div>
+  </section>
   <!-- tenteng kami -->
   <section>
     <div class="">
@@ -249,19 +281,19 @@
   </section>
 
   <section>
-  <div class="container">
-  <div class="row">
-    <div class="col">
-      Column
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          Column
+        </div>
+        <div class="col">
+          Column
+        </div>
+        <div class="col">
+          Column
+        </div>
+      </div>
     </div>
-    <div class="col">
-      Column
-    </div>
-    <div class="col">
-      Column
-    </div>
-  </div>
-</div>
   </section>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
