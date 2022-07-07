@@ -52,7 +52,7 @@ if (isset($_POST["aduan"])){
 
 
 
-if (isset($_POST["edit_data"])){
+if (isset($_POST["edit_aduan"])){
  if(edit_data($_POST) > 0){
      echo"
           <script>
@@ -229,7 +229,7 @@ aria-hidden="true">
                 <input type="file" name="img" class="form-control" id="img" aria-describedby="emailHelp">
               </div>
              
-              <button type="submit" class="btn btn-danger" name="adu">KIRIM</button>
+              <button type="submit" class="btn btn-danger" name="edit_aduan">KIRIM</button>
         </form>
     </div>
 </div>
@@ -248,25 +248,29 @@ aria-hidden="true">
         <th>SARAN</th>
         <th>KATEGORI</th>
         <th>INSTANSI</th>
+        <th>GAMBAR</th>
         <th colspan="2" class="text-center">Aksi</th>
     </tr>
 
     <?php 
         $i = 1;
-        foreach ($kegiatan as $hmj) : ?>
+        foreach ($aduan as $adu) : ?>
     <tr>
         <td><?= $i; ?></td>
-        <td><img src=" img/<?= $hmj['img']; ?>" width="40px" alt=""></td>
-        <td> <?= $hmj['nama']; ?></td>
-        <td><?= $hmj['desk']; ?></td>
+        <td> <?= $adu['email']; ?></td>
+        <td><?= $adu['kritik']; ?></td>
+        <td><?= $adu['saran']; ?></td>
+        <td><?= $adu['kategori']; ?></td>
+        <td><?= $adu['instansi']; ?></td>
+        <td><img src=" img/<?= $adu['img']; ?>" width="40px" alt=""></td>
         <td>
-<button type="button" class="btn btn-light" id="daftar" data-bs-toggle="modal" data-bs-target="#modal<?= $hmj['id']; ?>">
+<button type="button" class="btn btn-light" id="daftar" data-bs-toggle="modal" data-bs-target="#modal<?= $adu['id']; ?>">
     ubah
 </button>
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modal<?= $hmj['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal<?= $adu['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
@@ -276,35 +280,52 @@ aria-hidden="true">
         <div class="modal-body">
             <form action="" method="post" enctype="multipart/form-data">
                 <?php 
-                $id =  $hmj['id']; 
-                $edit_kegiatan = query("SELECT * FROM kegiatan WHERE id = $id");
+                $id =  $adu['id']; 
+                $edit_aduan = query("SELECT * FROM aduan WHERE id = $id");
                 ?>
-            <input type="hidden" name="id" value="<?= $id;?>">
+                <input type="hidden" name="id" value="<?= $id;?>">
+                <?php foreach ($edit_aduan as $edit_adu):?>
+               >
 
-            <?php foreach ($edit_kegiatan as $edit_keg):?>
-            <input type="hidden" name="imglama" value="<?= $edit_keg['img'];?>">
-
-                <div class="mb-3">
-
-                    <label for="img" class="form-label ">GAMBAR</label>
-                    <input type="file" name="img" class="form-control" id="img"
-                        aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="nama" class="form-label">NAMA KEGIATAN</label>
-                    <input type="text" name="nama" class="form-control"  value="<?= $edit_keg['nama'];?>" id="nama">
-                </div>
-                <div class="mb-3">
-                    <label for="desk" class="form-label">DESKRIPSI</label>
-                    <input type="text" name="desk" class="form-control" value="<?= $edit_keg['desk'];?>" id="desk">
-                </div>
-                
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Batal</button>
-                <button type="submit" name="edit_kegiatan" class="btn btn-dark">Kirim</button>
-            </div>
+                 <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email"  value="<?= $edit_adu['email'];?>" name="email" aria-describedby="emailHelp">
+              </div>
+              <div class="mb-3">
+                <label for="kritik" class="form-label">Kritik</label>
+                <textarea type="text" class="form-control" id="kritik"  value="<?= $edit_adu['kritik'];?>" name="kritik"> </textarea>
+              </div>
+              <div class="mb-3">
+                <label for="saran" class="form-label">Saran</label>
+                <textarea type="text" class="form-control" id="saran"  value="<?= $edit_adu['saran'];?>" name="saran"> </textarea>
+              </div>
+              <div class="mb-3">
+                <label for="kategori" class="form-label">Kategori</label>
+                <select id="kategori" name="kategori"  value="<?= $edit_adu['kategori'];?>" class="form-select">
+                  <option>lain-lain</option>
+                  <option>banjir</option>
+                  <option>gempa</option>
+                  <option>jalan berlubang</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="instansi" class="form-label">instansi</label>
+                <select id="instansi" name="instansi"  value="<?= $edit_adu['instansi'];?>" class="form-select">
+                  <option>KABUPATEN SINJAI</option>
+                  <option>KABUPATEN MAROS</option>
+                  <option>KABUPATEN GOWA</option>
+                  <option>KABUPATEN BONE</option>
+                  <option>KABUPATEN TAKALAR</option>
+                  <option>KABUPATEN BULUKUMBA</option>
+                  <option>KABUPATEN BANTAENG</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="img" class="form-label ">GAMBAR</label>
+                <input type="file" name="img" class="form-control" id="img" aria-describedby="emailHelp">
+              </div>
+             
+              <button type="submit" class="btn btn-danger" name="adu">KIRIM</button>
             <?php endforeach ?>
         </form>
     </div>
@@ -313,7 +334,7 @@ aria-hidden="true">
             </td>
             <td>
             <form action="" method="post">
-                <input type="hidden" name="id" value="<?= $hmj['id'];?>">
+                <input type="hidden" name="id" value="<?= $adu['id'];?>">
                 <button class="btn btn-dark text-light" type="submit" name="hapus">hapus</button>
             </form>
         </td>
