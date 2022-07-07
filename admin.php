@@ -3,11 +3,11 @@
 session_start();
 include'fungsi.php';
 
-// if(!isset($_SESSION['userweb'])){
-//     header('location:loginadmin.php');
-// };
+if(!isset($_SESSION['userweb'])){
+    header('location:login.php');
+};
 
-// $kegiatan = query("SELECT * FROM kegiatan ");
+$aduan = query("SELECT * FROM aduan ");
 
 
 if (isset($_POST["hapus"])){
@@ -131,13 +131,11 @@ if(isset($_POST['cari'])){
 </style>
 <body>
 <section class="">
-        <nav class="navbar  navbar-expand-lg navbar-light bg-danger  ">
+        <nav class="navbar  navbar-expand-lg navbar-light bg-light  ">
             <div class="container ">
                 <div class="brand d-flex justify-content-between align-items-center">
                     <a href="adminutama.php" class="logo d-flex">
-                        <img src="logo hmjti 1.png" alt="" class=" ">
-                        <p class="ms-3  fw-bold text-light">BERI KRITIK DAN SARAN <br>Teknik
-                            Informatika</p>
+                        <img src="./img/Group 8.png" alt="" class=" ">
                     </a>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -147,10 +145,10 @@ if(isset($_POST['cari'])){
                 <div class="collapse navbar-collapse text-ligth " id="navbarNav">
                     <ul class="nav navbar-nav ms-auto d-flex align-items-center ">
                         <li class="bar nav-item  ">
-                            <a class="nav-link me-5 text-light " href="#kegiatan">Kegiatan</a>
+                            <a class="nav-link me-5 text-danger " href="#kegiatan">Kegiatan</a>
                         </li>
                         <li class="bar nav-item">
-                            <a class="link nav-link me-5 text-light " href="adminberita.php">Berita</a>
+                            <a class="link nav-link me-5 text-danger " href="admin.php">Berita</a>
                         </li>
                         <li>
                             <a href="logout.php " style="background-color: white; color:red; padding:5px;text-decoration:none; border-radius:50px;font-weight:bold;">Logout</a>
