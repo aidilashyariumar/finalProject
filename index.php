@@ -20,6 +20,9 @@ if (isset($_POST["adu"])){
 }
 
 $aduan = query("SELECT * FROM aduan ORDER BY id DESC LIMIT 3");
+
+$count = mysqli_query($conn,"SELECT * FROM aduan");
+$jumlah_barang = mysqli_num_rows($count);
 ?>
 
 
@@ -202,7 +205,7 @@ $aduan = query("SELECT * FROM aduan ORDER BY id DESC LIMIT 3");
   <section>
     <div class="jumlah">
       <h2 class="my-4">Jumlah Aduan Yang Masuk</h2>
-      <h1 class="fw-bold">1000</h1>
+      <h1 class="fw-bold"><?php echo"$jumlah_barang" ?></h1>
     </div>
   </section>
 

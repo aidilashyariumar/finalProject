@@ -15,14 +15,14 @@ if (isset($_POST["hapus"])){
      echo"
           <script>
               alert('data berhasil dihapus');
-              document.location.href = 'kegiatanadmin.php';
+              document.location.href = 'admin.php';
           </script>
       ";
  }else{
       echo"
           <script>
               alert('data gagal dihapus');
-              document.location.href = 'kegiatanadmin.php';
+              document.location.href = 'admin.php';
           </script>
        ";
  }
@@ -32,19 +32,19 @@ if (isset($_POST["hapus"])){
 
 
 
-if (isset($_POST["kegiatan"])){
+if (isset($_POST["aduan"])){
     if(tambah_data($_POST) > 0){
         echo"
              <script>
                  alert('data berhasil ditambahkan');
-                 document.location.href = 'adminutama.php';
+                 document.location.href = 'admin.php';
              </script>
          ";
     }else{
          echo"
              <script>
                  alert('data gagal ditambahkan');
-                 document.location.href = 'adminutama.php';
+                 document.location.href = 'admin.php';
              </script>
           ";
     }
@@ -52,25 +52,25 @@ if (isset($_POST["kegiatan"])){
 
 
 
-if (isset($_POST["edit_kegiatan"])){
+if (isset($_POST["edit_data"])){
  if(edit_data($_POST) > 0){
      echo"
           <script>
               alert('data berhasil ditambahkan');
-              document.location.href = 'adminutama.php';
+              document.location.href = 'admin.php';
           </script>
       ";
  }else{
       echo"
           <script>
               alert('data gagal ditambahkan');
-              document.location.href = 'adminutama.php';
+              document.location.href = 'admin.php';
           </script>
        ";
  }
 }
 $jmldataperhalaman = 5;
-$jumlahdata = count(query("SELECT * FROM kegiatan"));
+$jumlahdata = count(query("SELECT * FROM aduan"));
 $jumlahhalaman = ceil($jumlahdata / $jmldataperhalaman);
 $halamanaktif = (isset($_GET['halaman']) ? $_GET['halaman']: 1);
 $awladata = ($jmldataperhalaman * $halamanaktif) - $jmldataperhalaman;
@@ -191,25 +191,45 @@ aria-hidden="true">
         </div>
         <div class="modal-body">
             <form action="" method="post" enctype="multipart/form-data">
-                <div class="mb-3">
-                    <label for="img" class="form-label ">GAMBAR</label>
-                    <input type="file" name="img" class="form-control" id="img"
-                        aria-describedby="emailHelp">
-
-                </div>
-                <div class="mb-3">
-                    <label for="nama" class="form-label">NAMA KEGIATAN</label>
-                    <input type="text" name="nama" class="form-control" id="nama">
-                </div>
-                <div class="mb-3">
-                    <label for="desk" class="form-label">DESKRIPSI</label>
-                    <input type="text" name="desk" class="form-control" id="desk">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Batal</button>
-                <button type="submit" name="kegiatan" class="btn btn-dark">Kirim</button>
-            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+              </div>
+              <div class="mb-3">
+                <label for="kritik" class="form-label">Kritik</label>
+                <textarea type="text" class="form-control" id="kritik" name="kritik"> </textarea>
+              </div>
+              <div class="mb-3">
+                <label for="saran" class="form-label">Saran</label>
+                <textarea type="text" class="form-control" id="saran" name="saran"> </textarea>
+              </div>
+              <div class="mb-3">
+                <label for="kategori" class="form-label">Kategori</label>
+                <select id="kategori" name="kategori" class="form-select">
+                  <option>lain-lain</option>
+                  <option>banjir</option>
+                  <option>gempa</option>
+                  <option>jalan berlubang</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="instansi" class="form-label">instansi</label>
+                <select id="instansi" name="instansi" class="form-select">
+                  <option>KABUPATEN SINJAI</option>
+                  <option>KABUPATEN MAROS</option>
+                  <option>KABUPATEN GOWA</option>
+                  <option>KABUPATEN BONE</option>
+                  <option>KABUPATEN TAKALAR</option>
+                  <option>KABUPATEN BULUKUMBA</option>
+                  <option>KABUPATEN BANTAENG</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="img" class="form-label ">GAMBAR</label>
+                <input type="file" name="img" class="form-control" id="img" aria-describedby="emailHelp">
+              </div>
+             
+              <button type="submit" class="btn btn-danger" name="adu">KIRIM</button>
         </form>
     </div>
 </div>
@@ -223,9 +243,11 @@ aria-hidden="true">
 <table class="" border="1" cellpadding="10" cellspacing="0">
     <tr>
         <th>NO</th>
-        <th>GAMBAR</th>
-        <th>NAMA KEGIATAN</th>
-        <th>DESKRIPSI</th>
+        <th>EMAIL</th>
+        <th>KRITIK</th>
+        <th>SARAN</th>
+        <th>KATEGORI</th>
+        <th>INSTANSI</th>
         <th colspan="2" class="text-center">Aksi</th>
     </tr>
 
