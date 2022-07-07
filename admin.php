@@ -3,9 +3,9 @@
 session_start();
 include'fungsi.php';
 
-if(!isset($_SESSION['userweb'])){
-    header('location:loginadmin.php');
-};
+// if(!isset($_SESSION['userweb'])){
+//     header('location:loginadmin.php');
+// };
 
 // $kegiatan = query("SELECT * FROM kegiatan ");
 
@@ -52,7 +52,7 @@ if (isset($_POST["aduan"])){
 
 
 
-if (isset($_POST["edit_aduan"])){
+if (isset($_POST["adu"])){
  if(edit_data($_POST) > 0){
      echo"
           <script>
@@ -76,12 +76,12 @@ $halamanaktif = (isset($_GET['halaman']) ? $_GET['halaman']: 1);
 $awladata = ($jmldataperhalaman * $halamanaktif) - $jmldataperhalaman;
 
 
-$kegiatan = query("SELECT * FROM kegiatan LIMIT $awladata,$jmldataperhalaman");
+$kegiatan = query("SELECT * FROM aduan LIMIT $awladata,$jmldataperhalaman");
 
 if(isset($_POST['cari'])){
-    $kegiatan = cari($_POST["keyword"],$awladata,$jmldataperhalaman);
+    $aduan = cari($_POST["keyword"],$awladata,$jmldataperhalaman);
 }else{
-    $kegiatan = query("SELECT * FROM kegiatan LIMIT $awladata,$jmldataperhalaman");
+    $aduan = query("SELECT * FROM aduan LIMIT $awladata,$jmldataperhalaman");
 }
 
 ?>
@@ -285,7 +285,7 @@ aria-hidden="true">
                 ?>
                 <input type="hidden" name="id" value="<?= $id;?>">
                 <?php foreach ($edit_aduan as $edit_adu):?>
-               >
+               
 
                  <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
