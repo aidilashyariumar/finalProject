@@ -245,9 +245,8 @@
     }
 
     function cari($keyword){
-        $query = "SELECT * FROM aduan WHERE nama LIKE '%$keyword%' OR desk LIKE '%$keyword%'";
+        $query = "SELECT * FROM aduan WHERE kritik LIKE '%$keyword%' OR saran LIKE '%$keyword%'";
         
-
         return query($query);
     }
     

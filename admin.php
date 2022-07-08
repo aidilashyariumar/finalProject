@@ -76,7 +76,7 @@ $halamanaktif = (isset($_GET['halaman']) ? $_GET['halaman']: 1);
 $awladata = ($jmldataperhalaman * $halamanaktif) - $jmldataperhalaman;
 
 
-$kegiatan = query("SELECT * FROM aduan LIMIT $awladata,$jmldataperhalaman");
+$aduan = query("SELECT * FROM aduan LIMIT $awladata,$jmldataperhalaman");
 
 if(isset($_POST['cari'])){
     $aduan = cari($_POST["keyword"],$awladata,$jmldataperhalaman);
@@ -184,7 +184,7 @@ aria-hidden="true">
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Kegiatan</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Aduan</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">

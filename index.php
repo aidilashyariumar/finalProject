@@ -23,6 +23,12 @@ $aduan = query("SELECT * FROM aduan ORDER BY id DESC LIMIT 3");
 
 $count = mysqli_query($conn,"SELECT * FROM aduan");
 $jumlah_barang = mysqli_num_rows($count);
+
+if(isset($_POST['cari'])){
+  $kegiatan = cari($_POST["keyword"],);
+}else{
+  $kegiatan = query("SELECT * FROM aduan ORDER BY id ASC");
+}
 ?>
 
 
@@ -34,6 +40,9 @@ $jumlah_barang = mysqli_num_rows($count);
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <!-- icon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+  <!-- css -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
@@ -56,6 +65,10 @@ $jumlah_barang = mysqli_num_rows($count);
     padding: 100px;
     text-align: center;
 
+  }
+
+  .warna{
+    background-color: #011627;
   }
 </style>
 
@@ -187,7 +200,7 @@ $jumlah_barang = mysqli_num_rows($count);
         <a href="https://bone.go.id/"><img src="./img/bone 1.png" alt=""></a> 
         <a href="https://luwuutarakab.go.id/"><img src="./img/lutra 1.png" alt=""></a> 
         <a href="https://www.luwutimurkab.go.id/"><img src="./img/luwu timur 1.png" alt=""></a> 
-        <a href="https://kepulauanselayarkab.go.id/"><img src="./img/selayar 1.png" alt=""></a> 
+        <a href="https://sidrapkab.go.id/"><img src="./img/sidrap 1.png" alt=""></a> 
         </div>
 
       </div>
@@ -213,20 +226,23 @@ $jumlah_barang = mysqli_num_rows($count);
   <!-- aduan -->
   <section class="my-5">
 
-    <div class="container">
+    <div class="container ">
       <h2 class="fw-bold d-flex justify-content-center my-5">Adua Terbaru</h2>
-      <div class="row d-flex justify-content-evenly">
-      <?php foreach ($aduan as $adu) : ?>
-        <div class="col-12 col-lg-4 col-md-4">
-          <div class="card" style="width: 18rem;">
-            <img src="img/<?= $adu['img']; ?>" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title"><?= substr($adu['kritik'],0,25); ?>...</h5>
-              <p class="card-text"><?= substr($adu['saran'],0,60); ?>...</p>
-              <a href="#" class="btn btn-danger">Lebih Lengkap</a>
+      <div class="d-flex justify-content-center">
+
+        <div class="row d-flex justify-content-evenly">
+          <?php foreach ($aduan as $adu) : ?>
+            <div class="col-12 col-lg-4 col-md-4">
+              <div class="card" style="width: 18rem;">
+                <img src="img/<?= $adu['img']; ?>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><?= substr($adu['kritik'],0,25); ?>...</h5>
+                  <p class="card-text"><?= substr($adu['saran'],0,60); ?>...</p>
+                  <a href="#" class="btn btn-danger">Lebih Lengkap</a>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
         <?php endforeach; ?>
       </div>
     </div>
@@ -238,9 +254,9 @@ $jumlah_barang = mysqli_num_rows($count);
     <div class="container">
 
       <h2 class="fw-bold d-flex justify-content-center my-5">PENELUSURAN ADUAN</h2>
-      <form class="" style="" role="search">
-        <input class="form-control me-2" type="search" placeholder="Cari Aduan" aria-label="Search">
-        <button class="btn btn-danger d-flex justify-content-center my-5" style="width: 10% ; margin:0px auto;"
+      <form class="" style="" method="post" action="" >
+        <input class="form-control me-2" type="search" name="keyword" placeholder="Cari Aduan" aria-label="Search">
+        <button class="btn btn-danger d-flex justify-content-center my-5" name="cari" style="width: 10% ; margin:0px auto;"
           type="submit">CARI</button>
       </form>
     </div>
@@ -264,17 +280,23 @@ $jumlah_barang = mysqli_num_rows($count);
     </div>
   </section>
 
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <h4></h4>
+  
+  <section class="warna">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffff" fill-opacity="1" d="M0,224L34.3,240C68.6,256,137,288,206,288C274.3,288,343,256,411,218.7C480,181,549,139,617,128C685.7,117,754,139,823,170.7C891.4,203,960,245,1029,229.3C1097.1,213,1166,139,1234,117.3C1302.9,96,1371,128,1406,144L1440,160L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z"></path></svg>
+    <div class="container ">
+      <div class="row text-light p-2 text-center  d-flex justify-content-evenly">
+        <div class="col ">
+          <h5><i class="bi bi-telephone-fill"></i> +62 852 1306 0504</h5>
+          <h5 class="mt-3"><i class="bi bi-geo-alt-fill "></i> Jl. Kakatua II No.17, Makassar, <br>  Sulawesi Selatan</h5>
         </div>
         <div class="col">
-          Column
+          <h5><i class="bi bi-envelope-fill"></i> aidilashyariumar@gmail.com</h5>
+          <h5 class="mt-3"><i class="bi bi-envelope-fill"></i> nurapriliaa242@gmail.com</h5>
+          
         </div>
         <div class="col">
-          Column
+          <h5 ><i class="bi bi-instagram"></i> BekisarSulsel</h5>
+          <h5 class="mt-3"><i class="bi bi-facebook"></i> Bekisar</h5>
         </div>
       </div>
     </div>
