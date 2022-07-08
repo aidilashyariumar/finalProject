@@ -24,12 +24,16 @@ $aduan = query("SELECT * FROM aduan ORDER BY id DESC LIMIT 3");
 $count = mysqli_query($conn,"SELECT * FROM aduan");
 $jumlah_barang = mysqli_num_rows($count);
 
+// if(isset($_POST['cari'])){
+//   $kegiatan = cari($_POST["keyword"],);
+// }else{
+//   $kegiatan = query("SELECT * FROM aduan ORDER BY id ASC");
+// }
+$aduan = query("SELECT * FROM aduan ORDER BY id DESC");
 if(isset($_POST['cari'])){
-  $kegiatan = cari($_POST["keyword"],);
-}else{
-  $kegiatan = query("SELECT * FROM aduan ORDER BY id ASC");
+ $aduan = cari($_POST['keyword']);
 }
-?>
+ ?>
 
 
 <!DOCTYPE html>
@@ -86,12 +90,13 @@ if(isset($_POST['cari'])){
             <a class="nav-link" href="index.php">Beranda</a>
           </li>
           <li class="nav-item me-3">
-            <a class="nav-link" href="index.php#">Tentang Kami</a>
+            <a class="nav-link" href="index.php#tentang">Tentang Kami</a>
           </li>
           <li class="nav-item me-3">
-            <a class="nav-link ">Penelusuran</a>
+            <a class="nav-link" href="index.php#terbaru">Aduan Terbaru</a>
           </li>
-          <button type="button" class="btn btn-outline-danger">Mulai</button>
+          <a href="index.php#mulai" class="btn btn-outline-danger">mulai</a> 
+         
         </ul>
       </div>
     </div>
@@ -119,7 +124,7 @@ if(isset($_POST['cari'])){
   </section>
 
 
-  <section class="container mt-5">
+  <section class="container mt-5" id="mulai">
     <div class="container">
       <div class="row  d-flex justify-content-between align-items-center">
         <div class="col col-12 col-lg-6 col-md-">
@@ -216,7 +221,7 @@ if(isset($_POST['cari'])){
     </div>
   </section>
 
-  <section>
+  <section id="terbaru">
     <div class="jumlah">
       <h2 class="my-4">Jumlah Aduan Yang Masuk</h2>
       <h1 class="fw-bold"><?php echo"$jumlah_barang" ?></h1>
@@ -228,43 +233,48 @@ if(isset($_POST['cari'])){
 
     <div class="container ">
       <h2 class="fw-bold d-flex justify-content-center my-5">Adua Terbaru</h2>
-      <div class="d-flex justify-content-center">
+      
 
-        <div class="row d-flex justify-content-evenly">
+        <div class="row d-flex justify-content-evenly" >
           <?php foreach ($aduan as $adu) : ?>
-            <div class="col-12 col-lg-4 col-md-4">
-              <div class="card" style="width: 18rem;">
-                <img src="img/<?= $adu['img']; ?>" class="card-img-top" alt="...">
+            <div class="col-12 col-lg-4 col-md-4 mt-2">
+              <div class="card  h-100" >
+                <img src="img/<?= $adu['img']; ?>" class="card-img-top" alt="..."  style="height:230px ;">
                 <div class="card-body">
                   <h5 class="card-title"><?= substr($adu['kritik'],0,25); ?>...</h5>
                   <p class="card-text"><?= substr($adu['saran'],0,60); ?>...</p>
-                  <a href="#" class="btn btn-danger">Lebih Lengkap</a>
+                  <a href="selengkapnya.php?id=<?= $adu['id']; ?>" class="btn btn-danger">Lebih Lengkap</a> 
                 </div>
               </div>
             </div>
-          </div>
+          
         <?php endforeach; ?>
       </div>
     </div>
+    <div class="container mt-5">
 
+      <a class="d-flex justify-content-center btn btn-danger" href="semuadata.php">
+        Lihat semua
+      </a>
+    </div>
   </section>
 
   <!-- penelusuran -->
-  <section>
-    <div class="container">
+  <section id="tentang">
+    <!-- <div class="container">
 
       <h2 class="fw-bold d-flex justify-content-center my-5">PENELUSURAN ADUAN</h2>
-      <form class="" style="" method="post" action="" >
+      <form class=""  method="post">
         <input class="form-control me-2" type="search" name="keyword" placeholder="Cari Aduan" aria-label="Search">
         <button class="btn btn-danger d-flex justify-content-center my-5" name="cari" style="width: 10% ; margin:0px auto;"
           type="submit">CARI</button>
       </form>
-    </div>
+    </div> -->
   </section>
   <!-- tenteng kami -->
-  <section>
+  <section >
     <div class="">
-      <h2 class="d-flex justify-content-center fw-bold">Tentang Kami</h2>
+      <h2 class="d-flex justify-content-center fw-bold" >Tentang Kami</h2>
       <div class="p-1" style="width:75%; margin:0px auto; background-color: #011627; color:white;">
         <h3 class="d-flex justify-content-center">Berkisar</h3>
         <p style="text-indent: 50px;">Berkisar (Beri Kritik dan Saran) adalah sebuah wadah berbentuk website yang

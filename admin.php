@@ -7,7 +7,7 @@ if(!isset($_SESSION['userweb'])){
     header('location:login.php');
 };
 
-$aduan = query("SELECT * FROM aduan ");
+// $aduan = query("SELECT * FROM aduan ");
 
 
 if (isset($_POST["hapus"])){
@@ -93,6 +93,12 @@ if(isset($_POST['cari'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+<!-- icon -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+  <!-- css -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
@@ -128,6 +134,10 @@ if(isset($_POST['cari'])){
         text-decoration: none;
         color: black;
     }
+    
+  .warna{
+    background-color: #011627;
+  }
 </style>
 <body>
 <section class="">
@@ -144,14 +154,9 @@ if(isset($_POST['cari'])){
                 </button>
                 <div class="collapse navbar-collapse text-ligth " id="navbarNav">
                     <ul class="nav navbar-nav ms-auto d-flex align-items-center ">
-                        <li class="bar nav-item  ">
-                            <a class="nav-link me-5 text-danger " href="#kegiatan">Kegiatan</a>
-                        </li>
-                        <li class="bar nav-item">
-                            <a class="link nav-link me-5 text-danger " href="admin.php">Berita</a>
-                        </li>
+                       
                         <li>
-                            <a href="logout.php " style="background-color: white; color:red; padding:5px;text-decoration:none; border-radius:50px;font-weight:bold;">Logout</a>
+                            <a href="logout.php " class="btn btn-danger" >Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -227,7 +232,7 @@ aria-hidden="true">
                 <input type="file" name="img" class="form-control" id="img" aria-describedby="emailHelp">
               </div>
              
-              <button type="submit" class="btn btn-danger" name="edit_aduan">KIRIM</button>
+              <button type="submit" class="btn btn-danger" name="aduan">KIRIM</button>
         </form>
     </div>
 </div>
@@ -262,7 +267,7 @@ aria-hidden="true">
         <td><?= $adu['instansi']; ?></td>
         <td><img src=" img/<?= $adu['img']; ?>" width="40px" alt=""></td>
         <td>
-<button type="button" class="btn btn-light" id="daftar" data-bs-toggle="modal" data-bs-target="#modal<?= $adu['id']; ?>">
+<button type="button" class="btn btn-dark" id="daftar" data-bs-toggle="modal" data-bs-target="#modal<?= $adu['id']; ?>">
     ubah
 </button>
 </div>
@@ -333,7 +338,7 @@ aria-hidden="true">
             <td>
             <form action="" method="post">
                 <input type="hidden" name="id" value="<?= $adu['id'];?>">
-                <button class="btn btn-dark text-light" type="submit" name="hapus">hapus</button>
+                <button class="btn btn-danger text-light" type="submit" name="hapus">hapus</button>
             </form>
         </td>
     </tr>
@@ -367,26 +372,27 @@ endforeach;
         </div>
 </section>
 
-<section class="bg-danger">
-        <div>
-            <div class="footer p-3 mt-5 ">
-                <div class="bungkus text-center">
-                    <div class="sosial">
-                        <h3 class="">SOCIAL MEDIA</h3>
-                        <div class="sosmed d-flex justify-content-center">
-                            <h5><i class="bi bi-instagram me-3"></i></h5>
-                            <h5><i class="bi bi-facebook"></i></h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="sekret">
-                    <p class="text-center px-5">Sekretariat : Gedung Sekretariat Fakultas Sains dan Teknologi Kampus II
-                        UIN Alauddin Makassar – Samata (Gowa) <br> E Hp. 082 290 215 484, </p>
-                </div>
-            </div>
-            <h6 class="text-center p-2 text-dark">Copyright &#169; Kelompok 2</h6>
+<section class="warna">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffff" fill-opacity="1" d="M0,224L34.3,240C68.6,256,137,288,206,288C274.3,288,343,256,411,218.7C480,181,549,139,617,128C685.7,117,754,139,823,170.7C891.4,203,960,245,1029,229.3C1097.1,213,1166,139,1234,117.3C1302.9,96,1371,128,1406,144L1440,160L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z"></path></svg>
+    <div class="container ">
+      <div class="row text-light p-2 text-center  d-flex justify-content-evenly">
+        <div class="col ">
+          <h5><i class="bi bi-telephone-fill"></i> +62 852 1306 0504</h5>
+          <h5 class="mt-3"><i class="bi bi-geo-alt-fill "></i> Jl. Kakatua II No.17, Makassar, <br>  Sulawesi Selatan</h5>
         </div>
-    </section>
+        <div class="col">
+          <h5><i class="bi bi-envelope-fill"></i> aidilashyariumar@gmail.com</h5>
+          <h5 class="mt-3"><i class="bi bi-envelope-fill"></i> nurapriliaa242@gmail.com</h5>
+          
+        </div>
+        <div class="col">
+          <h5 ><i class="bi bi-instagram"></i> BekisarSulsel</h5>
+          <h5 class="mt-3"><i class="bi bi-facebook"></i> Bekisar</h5>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
