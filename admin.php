@@ -238,7 +238,7 @@ aria-hidden="true">
 
 <div class="container d-flex justify-content-center ">
 
-<table class="" border="1" cellpadding="10" cellspacing="0">
+<table class=""  cellpadding="10" cellspacing="0">
     <tr>
         <th>NO</th>
         <th>EMAIL</th>
@@ -384,7 +384,7 @@ endforeach;
                         UIN Alauddin Makassar – Samata (Gowa) <br> E Hp. 082 290 215 484, </p>
                 </div>
             </div>
-            <H4 class="text-center p-2 text-dark">Copyright &#169; inready 2021</H4>
+            <h6 class="text-center p-2 text-dark">Copyright &#169; Kelompok 2</h6>
         </div>
     </section>
 

@@ -175,18 +175,19 @@ $jumlah_barang = mysqli_num_rows($count);
 
 
         <div class="logo1 d-flex justify-content-around ">
-          <img src="./img/gowa 1.png" alt="">
-          <img src="./img/bone 1.png" alt="">
-          <img src="./img/bulkum 1.png" alt="">
-          <img src="./img/selayar 1.png" alt="">
-          <img src="./img/lutra 1.png" alt="">
+         <a href="https://sinjaikab.go.id/"><img src="./img/sinjai.png" alt=""></a> 
+         <a href="https://bulukumbakab.go.id/"><img src="./img/bulkum 1.png" alt=""></a> 
+         <a href="https://maroskab.go.id/"><img src="./img/LOGO MAROS.png" alt=""></a> 
+         <a href="https://jenepontokab.go.id/"><img src="./img/jeneponto 1.png" alt=""></a> 
+         <a href="http://gowakab.go.id/"><img src="./img/gowa 1.png" alt=""></a> 
+        
         </div>
         <div class="logo1 d-flex justify-content-around mt-4">
-          <img src="./img/gowa 1.png" alt="">
-          <img src="./img/bone 1.png" alt="">
-          <img src="./img/bulkum 1.png" alt="">
-          <img src="./img/selayar 1.png" alt="">
-          <img src="./img/lutra 1.png" alt="">
+        <a href="https://kepulauanselayarkab.go.id/"><img src="./img/selayar 1.png" alt=""></a> 
+        <a href="https://bone.go.id/"><img src="./img/bone 1.png" alt=""></a> 
+        <a href="https://luwuutarakab.go.id/"><img src="./img/lutra 1.png" alt=""></a> 
+        <a href="https://www.luwutimurkab.go.id/"><img src="./img/luwu timur 1.png" alt=""></a> 
+        <a href="https://kepulauanselayarkab.go.id/"><img src="./img/selayar 1.png" alt=""></a> 
         </div>
 
       </div>
@@ -214,14 +215,14 @@ $jumlah_barang = mysqli_num_rows($count);
 
     <div class="container">
       <h2 class="fw-bold d-flex justify-content-center my-5">Adua Terbaru</h2>
-      <div class="row">
+      <div class="row d-flex justify-content-evenly">
       <?php foreach ($aduan as $adu) : ?>
         <div class="col-12 col-lg-4 col-md-4">
           <div class="card" style="width: 18rem;">
             <img src="img/<?= $adu['img']; ?>" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title"><?= $adu['kritik']; ?></h5>
-              <p class="card-text"><?= $adu['saran']; ?></p>
+              <h5 class="card-title"><?= substr($adu['kritik'],0,25); ?>...</h5>
+              <p class="card-text"><?= substr($adu['saran'],0,60); ?>...</p>
               <a href="#" class="btn btn-danger">Lebih Lengkap</a>
             </div>
           </div>
@@ -267,7 +268,7 @@ $jumlah_barang = mysqli_num_rows($count);
     <div class="container">
       <div class="row">
         <div class="col">
-          Column
+          <h4></h4>
         </div>
         <div class="col">
           Column
